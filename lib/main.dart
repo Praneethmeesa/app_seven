@@ -1,3 +1,4 @@
+import 'package:app_seven/ExerciseListScreen.dart';
 import 'package:app_seven/workout_screen5.dart';
 import 'package:flutter/material.dart';
 import 'package:app_seven/WorkoutScreen6.dart';
@@ -13,9 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-       //home: WorkoutScreen(),
+       home: ExerciseListScreen(),
      // home: WorkoutListScreen(),
-      home: WorkoutScreen6(),
+      //home: WorkoutScreen6(),
     );
   }
 }
