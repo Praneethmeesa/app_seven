@@ -3,6 +3,8 @@ import 'package:app_seven/workout_screen5.dart';
 import 'package:flutter/material.dart';
 import 'package:app_seven/WorkoutScreen6.dart';
 import 'package:app_seven/WorkoutScreen2.dart';
+import 'package:app_seven/workoutscreen7.dart';
+import 'package:app_seven/workoutscreen8.dart';
 void main() {
   runApp(MyApp());
 }
@@ -15,10 +17,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-       //home: ExerciseListScreen(),
-     // home: WorkoutListScreen(),
+      //home: ExerciseListScreen(),
+      // home: WorkoutListScreen(),
       //home: WorkoutScreen6(),
-        home: WorkoutTimerScreen(),
+      //home: WorkoutTimerScreen(),
+      home: WorkoutScreen7(),
+     // home: WorkoutScreen8(),
     );
   }
 }
