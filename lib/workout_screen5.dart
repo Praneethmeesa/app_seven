@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-class WorkoutScreen extends StatefulWidget {
+class WorkoutScreen5 extends StatefulWidget {
   @override
-  _WorkoutScreenState createState() => _WorkoutScreenState();
+  _WorkoutScreen5State createState() => _WorkoutScreen5State();
 }
 
-class _WorkoutScreenState extends State<WorkoutScreen> {
+class _WorkoutScreen5State extends State<WorkoutScreen5> {
   String workoutName = 'Core, Upper-Body, and Glutes';
   List<Map<String, String>> workouts = [
     {'time': '0:05', 'exercise': 'Forearm Plank', 'duration': '3:00'},

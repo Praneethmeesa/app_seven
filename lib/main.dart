@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
       // home: WorkoutListScreen(),
       //home: WorkoutScreen6(),
       //home: WorkoutTimerScreen(),
-      home: WorkoutScreen7(),
+      //home: WorkoutScreen7(),
      // home: WorkoutScreen8(),
+      home: WorkoutScreen5(),
     );
   }
 }
