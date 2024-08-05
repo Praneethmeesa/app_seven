@@ -1,10 +1,14 @@
-import 'package:app_seven/ExerciseListScreen.dart';
-import 'package:app_seven/workout_screen5.dart';
 import 'package:flutter/material.dart';
+import 'package:app_seven/ExerciseListScreen.dart';
+import 'package:app_seven/workout_screen5.dart'; // Import WorkoutScreen5
 import 'package:app_seven/WorkoutScreen6.dart';
 import 'package:app_seven/WorkoutScreen2.dart';
 import 'package:app_seven/workoutscreen7.dart';
 import 'package:app_seven/workoutscreen8.dart';
+import 'package:app_seven/workoutscreen4.dart';
+// import 'package:app_seven/WorkoutTimerScreen.dart';
+// import 'package:app_seven/settings_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -17,13 +21,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: ExerciseListScreen(),
-      // home: WorkoutListScreen(),
-      //home: WorkoutScreen6(),
-      //home: WorkoutTimerScreen(),
-      //home: WorkoutScreen7(),
-     // home: WorkoutScreen8(),
-      home: WorkoutScreen5(),
+      initialRoute: '/workoutList',
+      routes: {
+        '/workoutList': (context) => WorkoutListScreen(),
+        '/exerciseList': (context) => ExerciseListScreen(),
+        '/workoutScreen6': (context) => WorkoutScreen6(),
+        '/workoutScreen7': (context) => WorkoutScreen7(),
+        '/workoutScreen8': (context) => WorkoutScreen8(),
+        '/workoutScreen5': (context) => WorkoutScreen5(), // Add route for WorkoutScreen5
+        '/workoutTimer': (context) => WorkoutTimerScreen(),
+        '/workoutScreen4': (context) => SettingsScreen(),
+        '/settings': (context) => SettingsScreen(),
+      },
     );
   }
 }
@@ -49,13 +58,13 @@ class WorkoutListScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
-              // Handle notification button press
+              Navigator.pushNamed(context, '/settings');
             },
           ),
           IconButton(
             icon: Icon(Icons.settings),
             onPressed: () {
-              // Handle settings button press
+              Navigator.pushNamed(context, '/settings');
             },
           ),
         ],
@@ -68,14 +77,14 @@ class WorkoutListScreen extends StatelessWidget {
             title: Text(workouts[index]['title']!),
             trailing: Text(workouts[index]['duration']!),
             onTap: () {
-              // Handle workout item tap
+              Navigator.pushNamed(context, '/workoutScreen5'); // Navigate to WorkoutScreen5
             },
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Handle floating action button press
+          Navigator.pushNamed(context, '/workoutScreen6');
         },
         child: Icon(Icons.add),
       ),

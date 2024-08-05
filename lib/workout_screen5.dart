@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class WorkoutScreen5 extends StatefulWidget {
   @override
   _WorkoutScreen5State createState() => _WorkoutScreen5State();

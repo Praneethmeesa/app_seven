@@ -26,6 +26,7 @@ class WorkoutScreen7 extends StatefulWidget {
 class _WorkoutScreenState extends State<WorkoutScreen7> {
   int _start = 3; // Start time in seconds
   Timer? _timer;
+  final int _totalDuration = 15; // Total duration for the progress indicator
 
   @override
   void initState() {
@@ -61,7 +62,9 @@ class _WorkoutScreenState extends State<WorkoutScreen7> {
         actions: [
           IconButton(
             icon: Icon(Icons.spa), // Replace with your own icon
-            onPressed: () {},
+            onPressed: () {
+              // Add functionality for the icon
+            },
           ),
         ],
       ),
@@ -71,21 +74,21 @@ class _WorkoutScreenState extends State<WorkoutScreen7> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: LinearProgressIndicator(
-              value: 1 - (_start / 15), // Assuming total time is 15 seconds
+              value: 1 - (_start / _totalDuration),
               backgroundColor: Colors.grey[300],
               valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
             ),
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text('0:03'),
+                child: Text('$_start', style: TextStyle(fontSize: 20)),
               ),
               Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text('-14:57'),
+                child: Text('-${(_totalDuration - _start).toString().padLeft(2, '0')}', style: TextStyle(fontSize: 20)),
               ),
             ],
           ),
@@ -119,10 +122,9 @@ class _WorkoutScreenState extends State<WorkoutScreen7> {
                       children: [
                         CircularProgressIndicator(
                           value: _start / 3,
-                          strokeWidth: 100,
+                          strokeWidth: 10,
                           backgroundColor: Colors.grey[300],
-                          valueColor:
-                          const AlwaysStoppedAnimation<Color>(Colors.red),
+                          valueColor: const AlwaysStoppedAnimation<Color>(Colors.red),
                         ),
                         Text(
                           '$_start',
