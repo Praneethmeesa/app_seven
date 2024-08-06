@@ -1,10 +1,8 @@
-import 'package:app_seven/ExerciseListScreen.dart';
-import 'package:app_seven/workout_screen5.dart';
 import 'package:flutter/material.dart';
-import 'package:app_seven/WorkoutScreen6.dart';
-import 'package:app_seven/WorkoutScreen2.dart';
-import 'package:app_seven/workoutscreen7.dart';
-import 'package:app_seven/workoutscreen8.dart';
+import 'workout_timer_screen.dart';
+import 'settings_screen.dart';
+import 'completed_workouts_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -17,28 +15,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: ExerciseListScreen(),
-      // home: WorkoutListScreen(),
-      //home: WorkoutScreen6(),
-      //home: WorkoutTimerScreen(),
-      //home: WorkoutScreen7(),
-     // home: WorkoutScreen8(),
-      home: WorkoutScreen5(),
+      home: HomeScreen(),
     );
   }
 }
 
-class WorkoutListScreen extends StatelessWidget {
-  final List<Map<String, String>> workouts = [
-    {
-      'title': 'The Scientific 7-Minute Workout',
-      'duration': '8:00',
-    },
-    {
-      'title': 'Core, Upper-Body, and Glutes',
-      'duration': '15:00',
-    },
-  ];
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<String> completedWorkouts = [];
+
+  void _addCompletedWorkout(String workout) {
+    setState(() {
+      completedWorkouts.add(workout);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,38 +41,58 @@ class WorkoutListScreen extends StatelessWidget {
         title: Text('Workout Time!'),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications),
+            icon: Icon(Icons.settings),
             onPressed: () {
-              // Handle notification button press
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsScreen()),
+              );
             },
           ),
           IconButton(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.note),
             onPressed: () {
-              // Handle settings button press
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WorkoutTimerScreen(),
+                ),
+              ).then((result) {
+                if (result != null) {
+                  _addCompletedWorkout(result);
+                }
+              });
             },
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: workouts.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Icon(Icons.edit),
-            title: Text(workouts[index]['title']!),
-            trailing: Text(workouts[index]['duration']!),
-            onTap: () {
-              // Handle workout item tap
-            },
-          );
-        },
+      body: ListView(
+        children: [
+          WorkoutItem(
+            title: 'The Scientific 7-Minute Workout',
+            duration: '8:00',
+          ),
+          WorkoutItem(
+            title: 'Core, Upper-Body, and Glutes',
+            duration: '15:00',
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle floating action button press
-        },
-        child: Icon(Icons.add),
-      ),
+    );
+  }
+}
+
+class WorkoutItem extends StatelessWidget {
+  final String title;
+  final String duration;
+
+  WorkoutItem({required this.title, required this.duration});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(title),
+      subtitle: Text(duration),
     );
   }
 }

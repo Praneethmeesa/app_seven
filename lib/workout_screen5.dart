@@ -20,7 +20,7 @@ class _WorkoutScreen5State extends State<WorkoutScreen5> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Workout name'),
+          title: Text('Workout Name'),
           content: TextField(
             controller: controller,
             decoration: InputDecoration(hintText: 'Enter workout name'),

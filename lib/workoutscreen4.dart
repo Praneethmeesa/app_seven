@@ -1,77 +1,63 @@
 import 'package:flutter/material.dart';
 
-class SettingsScreen extends StatefulWidget {
+class WorkoutScreen4 extends StatefulWidget {
   @override
-  _SettingsScreenState createState() => _SettingsScreenState();
+  _WorkoutScreen4State createState() => _WorkoutScreen4State();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
-  String _threeSecondsLeftSound = 'Beep';
-  String _endOfExerciseSound = 'Ding';
-  String _endOfTrainingSound = 'Applause';
+class _WorkoutScreen4State extends State<WorkoutScreen4> {
+  int _count = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _count++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _count--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Workout Time! Settings'),
+        title: Text('Workout Screen 4'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              // Handle settings icon press
+            },
+          ),
+        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Sounds', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text('Count:', style: TextStyle(fontSize: 24)),
+            Text('$_count', style: TextStyle(fontSize: 48)),
             SizedBox(height: 20),
-            _buildDropdown(
-              '3 seconds left',
-              _threeSecondsLeftSound,
-                  (String? newValue) {
-                setState(() {
-                  _threeSecondsLeftSound = newValue!;
-                });
-              },
-            ),
-            _buildDropdown(
-              'End of exercise',
-              _endOfExerciseSound,
-                  (String? newValue) {
-                setState(() {
-                  _endOfExerciseSound = newValue!;
-                });
-              },
-            ),
-            _buildDropdown(
-              'End of training',
-              _endOfTrainingSound,
-                  (String? newValue) {
-                setState(() {
-                  _endOfTrainingSound = newValue!;
-                });
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: _decrementCounter,
+                  child: Text('Decrement'),
+                ),
+                SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: _incrementCounter,
+                  child: Text('Increment'),
+                ),
+              ],
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildDropdown(String label, String value, ValueChanged<String?> onChanged) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(label),
-        DropdownButton<String>(
-          value: value,
-          onChanged: onChanged,
-          items: <String>['Beep', 'Ding', 'Applause'].map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-        ),
-      ],
     );
   }
 }

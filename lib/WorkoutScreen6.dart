@@ -23,14 +23,14 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Workout Name'),
+          title: Text('Workout Name'),
           content: TextField(
             controller: controller,
-            decoration: const InputDecoration(hintText: 'Enter workout name'),
+            decoration: InputDecoration(hintText: 'Enter workout name'),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Rename'),
+              child: Text('Rename'),
               onPressed: () {
                 setState(() {
                   workoutName = controller.text;
@@ -50,15 +50,15 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Prelude Time'),
+          title: Text('Prelude Time'),
           content: TextField(
             controller: controller,
             keyboardType: TextInputType.number,
-            decoration: const InputDecoration(hintText: 'Enter prelude time in seconds'),
+            decoration: InputDecoration(hintText: 'Enter prelude time in seconds'),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Save'),
+              child: Text('Save'),
               onPressed: () {
                 setState(() {
                   int? newPreludeTime = int.tryParse(controller.text);
@@ -82,7 +82,7 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
         title: Text(workoutName),
         actions: [
           IconButton(
-            icon: const Icon(Icons.edit),
+            icon: Icon(Icons.edit),
             onPressed: _showRenameDialog,
           ),
         ],
@@ -123,12 +123,7 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
                   children: [
                     const Text('Prelude Time', style: TextStyle(color: Colors.grey)),
                     const SizedBox(height: 10),
-                    Text('$preludeTime s', style: const TextStyle(fontSize: 30)),
-                    const SizedBox(height: 20),
-                    TextButton(
-                      onPressed: _showPreludeDialog,
-                      child: const Text('Edit', style: TextStyle(color: Colors.blue)),
-                    ),
+                    Text('$preludeTime seconds', style: TextStyle(fontSize: 24)),
                   ],
                 ),
               ),
@@ -137,10 +132,8 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add functionality for the FloatingActionButton here
-        },
-        child: const Icon(Icons.add),
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
     );
   }
