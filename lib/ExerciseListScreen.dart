@@ -1,63 +1,56 @@
 import 'package:flutter/material.dart';
 
-
-
 class ExerciseListScreen extends StatelessWidget {
-  final List<Map<String, String>> exercises = [
-    {'name': 'Jumping jacks', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Wall sit', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Push-up', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Abdominal crunch', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Step-up onto chair', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Squat', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Triceps dip on chair', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Plank', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'High knees running in place', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Lunge', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Push-up and rotation', 'time': '0:10', 'duration': '0:30'},
-    {'name': 'Side plank', 'time': '0:10', 'duration': '0:30'},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('The Scientific 7-Minute Workout'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {
-              // Handle notification button press
-            },
+        title: Text('Exercise List'),
+      ),
+      body: ListView(
+        children: [
+          ExerciseListItem(
+            title: 'Push-Up',
+            duration: '1:00',
+            description: 'A basic exercise to strengthen upper body.',
           ),
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              // Handle settings button press
-            },
+          ExerciseListItem(
+            title: 'Squat',
+            duration: '1:30',
+            description: 'An exercise for lower body strength.',
+          ),
+          ExerciseListItem(
+            title: 'Burpee',
+            duration: '2:00',
+            description: 'A full-body exercise with a cardio component.',
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: exercises.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(exercises[index]['time']!),
-                Text(exercises[index]['name']!),
-                Text(exercises[index]['duration']!),
-              ],
-            ),
-          );
+    );
+  }
+}
+
+class ExerciseListItem extends StatelessWidget {
+  final String title;
+  final String duration;
+  final String description;
+
+  ExerciseListItem({
+    required this.title,
+    required this.duration,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(title),
+        subtitle: Text('$duration - $description'),
+        trailing: Icon(Icons.arrow_forward),
+        onTap: () {
+          // Handle item tap
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle floating action button press
-        },
-        child: Icon(Icons.add),
       ),
     );
   }

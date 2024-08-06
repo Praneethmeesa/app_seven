@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Workout Time!',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: WorkoutScreen8(),
-    );
-  }
-}
-
 class WorkoutScreen8 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +9,9 @@ class WorkoutScreen8 extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.calendar_today),
-            onPressed: () {},
+            onPressed: () {
+              // Handle calendar icon press
+            },
           ),
         ],
       ),
@@ -41,19 +26,21 @@ class WorkoutScreen8 extends StatelessWidget {
             title: 'Core, Upper-Body, and Glutes',
             duration: '15:00',
             exercises: [
-              ExerciseItem(time: '0:05', name: 'Forearm Plank', duration: '3:00'),
-              ExerciseItem(time: '0:10', name: 'Side Plank (left)', duration: '1:30'),
-              ExerciseItem(time: '0:10', name: 'Side Plank (right)', duration: '1:30'),
-              ExerciseItem(time: '0:10', name: 'Forearm Plank', duration: '3:00'),
-              ExerciseItem(time: '0:20', name: 'Push-Ups', duration: '0:45'),
-              ExerciseItem(time: '0:20', name: 'Push-Ups', duration: '0:45'),
-              ExerciseItem(time: '0:15', name: 'Glute Bridge', duration: '3:00'),
+              Exercise(time: '0:05', name: 'Forearm Plank', duration: '3:00'),
+              Exercise(time: '0:10', name: 'Side Plank (left)', duration: '1:30'),
+              Exercise(time: '0:10', name: 'Side Plank (right)', duration: '1:30'),
+              Exercise(time: '0:10', name: 'Forearm Plank', duration: '3:00'),
+              Exercise(time: '0:20', name: 'Push-Ups', duration: '0:45'),
+              Exercise(time: '0:20', name: 'Push-Ups', duration: '0:45'),
+              Exercise(time: '0:15', name: 'Glute Bridge', duration: '3:00'),
             ],
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // Handle floating action button press
+        },
         child: Icon(Icons.add),
       ),
     );
@@ -63,7 +50,7 @@ class WorkoutScreen8 extends StatelessWidget {
 class WorkoutItem extends StatelessWidget {
   final String title;
   final String duration;
-  final List<ExerciseItem> exercises;
+  final List<Exercise> exercises;
 
   WorkoutItem({required this.title, required this.duration, required this.exercises});
 
@@ -75,7 +62,9 @@ class WorkoutItem extends StatelessWidget {
         subtitle: Text(duration),
         leading: IconButton(
           icon: Icon(Icons.edit),
-          onPressed: () {},
+          onPressed: () {
+            // Handle edit button press
+          },
         ),
         children: exercises.map((exercise) => ListTile(
           title: Text(exercise.name),
@@ -87,10 +76,10 @@ class WorkoutItem extends StatelessWidget {
   }
 }
 
-class ExerciseItem {
+class Exercise {
   final String time;
   final String name;
   final String duration;
 
-  ExerciseItem({required this.time, required this.name, required this.duration});
+  Exercise({required this.time, required this.name, required this.duration});
 }
