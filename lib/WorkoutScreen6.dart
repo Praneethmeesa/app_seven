@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class WorkoutScreen6 extends StatefulWidget {
   const WorkoutScreen6({super.key});
 
@@ -11,7 +9,7 @@ class WorkoutScreen6 extends StatefulWidget {
 
 class _WorkoutScreen6State extends State<WorkoutScreen6> {
   String workoutName = 'Core, Upper-Body, and Glutes';
-  int preludeTime = 10;
+  int preludeTime = 10; // Prelude time in seconds
   List<Map<String, String>> workouts = [
     {'time': '0:05', 'exercise': 'Forearm Plank', 'duration': '3:00'},
     {'time': '0:10', 'exercise': 'Side Plank (left)', 'duration': '1:30'},
@@ -25,7 +23,7 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Workout name'),
+          title: const Text('Workout Name'),
           content: TextField(
             controller: controller,
             decoration: const InputDecoration(hintText: 'Enter workout name'),
@@ -52,18 +50,21 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('prelude'),
+          title: const Text('Prelude Time'),
           content: TextField(
             controller: controller,
             keyboardType: TextInputType.number,
-            decoration: const InputDecoration(hintText: 'Enter prelude time'),
+            decoration: const InputDecoration(hintText: 'Enter prelude time in seconds'),
           ),
           actions: <Widget>[
             TextButton(
               child: const Text('Save'),
               onPressed: () {
                 setState(() {
-                  preludeTime = int.parse(controller.text);
+                  int? newPreludeTime = int.tryParse(controller.text);
+                  if (newPreludeTime != null) {
+                    preludeTime = newPreludeTime;
+                  }
                 });
                 Navigator.of(context).pop();
               },
@@ -120,13 +121,13 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('prelude', style: TextStyle(color: Colors.grey)),
+                    const Text('Prelude Time', style: TextStyle(color: Colors.grey)),
                     const SizedBox(height: 10),
-                    Text('$preludeTime', style: const TextStyle(fontSize: 30)),
+                    Text('$preludeTime s', style: const TextStyle(fontSize: 30)),
                     const SizedBox(height: 20),
                     TextButton(
                       onPressed: _showPreludeDialog,
-                      child: const Text('Save', style: TextStyle(color: Colors.blue)),
+                      child: const Text('Edit', style: TextStyle(color: Colors.blue)),
                     ),
                   ],
                 ),
@@ -136,7 +137,9 @@ class _WorkoutScreen6State extends State<WorkoutScreen6> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          // Add functionality for the FloatingActionButton here
+        },
         child: const Icon(Icons.add),
       ),
     );

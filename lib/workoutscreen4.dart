@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(WorkoutApp());
-}
-
-class WorkoutApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Workout Time!',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SettingsScreen(),
-    );
-  }
-}
-
 class SettingsScreen extends StatefulWidget {
   @override
   _SettingsScreenState createState() => _SettingsScreenState();

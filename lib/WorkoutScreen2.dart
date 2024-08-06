@@ -1,7 +1,6 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 
-
 class WorkoutTimerScreen extends StatelessWidget {
   final CountDownController _controller = CountDownController();
 
@@ -80,6 +79,9 @@ class WorkoutTimerScreen extends StatelessWidget {
               autoStart: true,
               onComplete: () {
                 // Handle timer complete
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Time is up!'))
+                );
               },
             ),
             SizedBox(height: 20),

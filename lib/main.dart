@@ -5,7 +5,6 @@ import 'package:app_seven/WorkoutScreen6.dart';
 import 'package:app_seven/WorkoutScreen2.dart';
 import 'package:app_seven/workoutscreen7.dart';
 import 'package:app_seven/workoutscreen8.dart';
-import 'package:app_seven/workoutscreen4.dart';
 void main() {
   runApp(MyApp());
 }
@@ -24,8 +23,7 @@ class MyApp extends StatelessWidget {
       //home: WorkoutTimerScreen(),
       //home: WorkoutScreen7(),
      // home: WorkoutScreen8(),
-     // home: WorkoutScreen5(),
-      home: WorkoutApp(),
+      home: WorkoutScreen5(),
     );
   }
 }

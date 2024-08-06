@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class ExerciseListScreen extends StatelessWidget {
   final List<Map<String, String>> exercises = [
     {'name': 'Jumping jacks', 'time': '0:10', 'duration': '0:30'},
